@@ -22,20 +22,23 @@ $(function(){
 	
 });
 
-var weatherData;
-var getIt = document.getElementById("getIt");
 var convertC = document.getElementById("convertC");
 var convertF = document.getElementById("convertF");
+var symbol = document.getElementById("symbol"); // for weather symbol
+var displayTemp = document.getElementById("temp");
 var temp;
+var descript; // to convert from symbol use
 
-getIt.addEventListener("click", gettingJSON, false);
 convertC.addEventListener("click", convertCel, false);
 convertF.addEventListener("click", convertFah, false);
 
 
 function gettingJSON(){
 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London&APPID=0e61c9d5e0a1848bbb9d99132298b339", function(a) {
-		temp = (a.main.temp);
+		
+		temp = a.main.temp;
+		descript = a.weather[0].description;
+		
 	});
 }
 
