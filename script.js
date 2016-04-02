@@ -6,9 +6,18 @@ $(function(){
 		
     document.write("City: "+ result.name + "<br />");
     document.write("Weather: "+ result.weather[0].description + "<br />");
-		document.write((temp - 273.15).toFixed(2) + "C" + "<br />");
-		document.write(((1.8*(temp - 273))+32).toFixed(2) + "F" + "<br />");
-		document.write(temp + "K");
+		document.write((temp - 273.15).toFixed(2) + "&degC" + "<br />");
+		document.write(((1.8*(temp - 273))+32).toFixed(2) + "&degF" + "<br />");
+		document.write(temp + "&degK");
+		
+		if ((result.weather[0].description).indexOf("rain")) {
+			$("body").css("background-image", "rainy.jpg");
+		} else if ((result.weather[0].description).indexOf("snow")) {
+			$("body").css("background-image", "snowy.jpg");
+		} else {
+			$("body").css("background-image", "sunny.jpg");
+		}
+		
   });
 	
 });
