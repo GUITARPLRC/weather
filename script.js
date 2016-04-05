@@ -6,12 +6,11 @@ $(function(){
 	var displayTemp = document.getElementById("temp");
 	var message = document.getElementById("message");
 	var myCity = document.getElementById("myCity");
-	var city;
-	var weather;
-	var temp;
+	var city; // store city name
+	var temp; // store temp value
+	var latitude; // store latitude location
+	var longitude; // store longitude location
 	var descript; // to convert from symbol use
-	var latitude;
-	var longitude;
 	
 	function storePosition(position) {
 		latitude = (position.coords.latitude).toFixed(2);
