@@ -1,25 +1,24 @@
 $(function(){
 	
-	var convertC = document.getElementById("convertC");
-	var convertF = document.getElementById("convertF");
-	var symbol = document.getElementById("symbol"); // for weather symbol
-	var displayTemp = document.getElementById("temp");
-	var message = document.getElementById("message");
-	var myCity = document.getElementById("myCity");
+	var convertC = $("convertC");
+	var convertF = $("convertF");
+	var symbol = $("symbol"); // for weather symbol
+	var displayTemp = $("temperature");
+	var message = $("message");
+	var myCity = $("myCity");
 	var city; // store city name
 	var temp; // store temp value
 	var latitude; // store latitude location
 	var longitude; // store longitude location
 	var descript; // to convert from symbol use
 	
-	function storePosition(position) {
-		latitude = (position.coords.latitude).toFixed(2);
-		longitude = (position.coords.longitude).toFixed(2);
-	}
+	convertC.click(convertCel);
+	convertF.click(convertFah);
 	
-	navigator.geolocation.getCurrentPosition(storePosition); // get local coordinates
-	
-	console.log(latitude);
+	navigator.geolocation.getCurrentPosition(function (position) {
+		latitude = (position.coords.latitude).toString();
+		longitude = (position.coords.longitude).toString();
+	});
 	
 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=0e61c9d5e0a1848bbb9d99132298b339",function(result){
 		
@@ -39,9 +38,6 @@ $(function(){
 		}
 		
   });
-	
-	convertC.addEventListener("click", convertCel, false);
-	convertF.addEventListener("click", convertFah, false);
 
 	function convertCel() {
 		var cTemp; // temporary to hold celsius value
