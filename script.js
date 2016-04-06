@@ -11,16 +11,17 @@ $(function(){
 	var latitude; // store latitude location
 	var longitude; // store longitude location
 	var descript; // to convert from symbol use
+	var location = "schaumburg,il";
 	
 	convertC.click(convertCel);
 	convertF.click(convertFah);
 	
 	navigator.geolocation.getCurrentPosition(function (position) {
-		latitude = (position.coords.latitude).toString();
-		longitude = (position.coords.longitude).toString();
+		latitude = position.coords.latitude;
+		longitude = position.coords.longitude;
 	});
 	
-	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&APPID=0e61c9d5e0a1848bbb9d99132298b339",function(result){
+	$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=0e61c9d5e0a1848bbb9d99132298b339", function(result){
 		
 		temp = result.main.temp;
 		city = result.name;
@@ -57,7 +58,7 @@ $(function(){
 
 	myCity.textContent = city;
 	message.textContent = descript;
-	convertF.click();
+	convertF.click;
 	
 	
 });
