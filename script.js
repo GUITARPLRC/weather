@@ -16,17 +16,20 @@ $(function(){
 	convertC.click(convertCel);
 	convertF.click(convertFah);
 	
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			lat = position.coords.latitude;
-			long = position.coords.longitude;
-			myLocation = "lat="+lat+"&lon="+long;
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			console.log(position.coords.latitude);
+			myLat = (position.coords.latitude).toFixed(2);
+			myLong = (position.coords.longitude).toFixed(2);
+			myLocation = "lat="+myLat+"&lon="+myLong;
 		})
 	} else {
 		myLocation = "q=england";
 	}
 	
-	$.getJSON("http://api.openweathermap.org/data/2.5/weather?" + location + "&appid=0e61c9d5e0a1848bbb9d99132298b339", function(info){
+	console.log(myLocation);
+	
+	$.getJSON("http://api.openweathermap.org/data/2.5/weather?" + myLocation + "&appid=0e61c9d5e0a1848bbb9d99132298b339", function(info){
 		
 		console.log(info["coord"]);
 		tempNow = info.main.temp;
