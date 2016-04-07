@@ -9,8 +9,8 @@ var myLat;
 var myLong;
 var tempNow;
 
-convertC.click(convertCel);
-convertF.click(convertFah);
+convertC.addEventListener("click", convertCel, false);
+convertF.addEventListener("click", convertFah, false);
 
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -28,10 +28,8 @@ function getWeather() {
   $.getJSON("http://api.openweathermap.org/data/2.5/weather?" + myLocation + "&appid=0e61c9d5e0a1848bbb9d99132298b339", function(info) {
 
     tempNow = info.main.temp;
-    displayTemp.textContent = tempNow;
     myCity.textContent = info.name;
     message.textContent = info.weather[0].description;
-		console.log(tempNow);
 
     if ((info.weather[0].description).indexOf("rain")) {
       $("body").css("background-image", "url(rainy.jpg)");
@@ -43,6 +41,8 @@ function getWeather() {
       $("body").css("background-image", "url(sunny.jpg)");
 
     }
+		
+		convertFah();
 
   });
 }
