@@ -9,3 +9,16 @@ body {
 	background-size:cover;
 	background-repeat:no-repeat;
 }
+
+#myCity {
+	width:200px;
+	height:50px;
+}
+#temperature {
+	width:200px;
+	height:50px;
+}
+#message {
+	width:200px;
+	height:50px;
+}
