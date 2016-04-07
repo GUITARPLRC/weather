@@ -7,30 +7,36 @@ $(function(){
 	var message = $("message");
 	var myCity = $("myCity");
 	var city; // store city name
-	var temp; // store temp value
+	var tempNow; // store temp value
 	var latitude; // store latitude location
 	var longitude; // store longitude location
 	var descript; // to convert from symbol use
-	var location = "schaumburg,il";
+	var myLocation; // store location info
 	
 	convertC.click(convertCel);
 	convertF.click(convertFah);
 	
-	navigator.geolocation.getCurrentPosition(function (position) {
-		latitude = position.coords.latitude;
-		longitude = position.coords.longitude;
-	});
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			lat = position.coords.latitude;
+			long = position.coords.longitude;
+			myLocation = "lat="+lat+"&lon="+long;
+		})
+	} else {
+		myLocation = "q=england";
+	}
 	
-	$.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=0e61c9d5e0a1848bbb9d99132298b339", function(result){
+	$.getJSON("http://api.openweathermap.org/data/2.5/weather?" + location + "&appid=0e61c9d5e0a1848bbb9d99132298b339", function(info){
 		
-		temp = result.main.temp;
-		city = result.name;
-		descript = result.weather[0].description;
+		console.log(info["coord"]);
+		tempNow = info.main.temp;
+		city = info.name;
+		descript = info.weather[0].description;
 		
-		if ((result.weather[0].description).indexOf("rain")) {
+		if ((info.weather[0].description).indexOf("rain")) {
 			$("body").css("background-image", "url(rainy.jpg)");
 			
-		} else if ((result.weather[0].description).indexOf("snow")) {
+		} else if ((info.weather[0].description).indexOf("snow")) {
 			$("body").css("background-image", "url(snowy.jpg)");
 			
 		} else {
@@ -44,7 +50,7 @@ $(function(){
 		var cTemp; // temporary to hold celsius value
 		convertC.style.visibility = "hidden";
 		convertF.style.visibility = "visible";
-		cTemp = (temp - 273.15).toFixed(2);
+		cTemp = (tempNow - 273.15).toFixed(2);
 		displayTemp.textContent = cTemp + "\u00B0C"; //display temp value and add degree
 	}
 
@@ -52,7 +58,7 @@ $(function(){
 		var fTemp; // temporary to hold fahrenheit value
 		convertF.style.visibility = "hidden";
 		convertC.style.visibility = "visible";
-		fTemp = (1.8 * (temp - 273) + 32).toFixed(2);
+		fTemp = (1.8 * (tempNow - 273) + 32).toFixed(2);
 		displayTemp.textContent = fTemp + "\u00B0F"; //display temp value and add degree
 	}
 
