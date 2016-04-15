@@ -51,7 +51,7 @@ function convertCel() {
   var cTemp; // temporary to hold celsius value
   convertC.style.visibility = "hidden";
   convertF.style.visibility = "visible";
-  cTemp = (tempNow - 273.15).toFixed(2);
+  cTemp = Math.round(tempNow - 273.15);
   displayTemp.textContent = cTemp + "\u00B0C"; //display temp value and add degree
 }
 
@@ -59,6 +59,6 @@ function convertFah() {
   var fTemp; // temporary to hold fahrenheit value
   convertF.style.visibility = "hidden";
   convertC.style.visibility = "visible";
-  fTemp = (1.8 * (tempNow - 273) + 32).toFixed(2);
+  fTemp = Math.round(1.8 * (tempNow - 273) + 32);
   displayTemp.textContent = fTemp + "\u00B0F"; //display temp value and add degree
 }
