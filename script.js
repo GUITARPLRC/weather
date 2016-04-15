@@ -1,16 +1,20 @@
-var convertC = document.getElementById("convertC");
-var convertF = document.getElementById("convertF");
+var container = document.getElementById("container");
 var displayTemp = document.getElementById("temperature");
 var message = document.getElementById("message");
 var myCity = document.getElementById("myCity");
-var descript; // to convert from symbol use
 var myLocation; // store location info
 var myLat;
 var myLong;
 var tempNow;
+var check = 0;
 
-convertC.addEventListener("click", convertCel, false);
-convertF.addEventListener("click", convertFah, false);
+container.addEventListener("click", function() {
+	if (check === 0) {
+		convertFah();
+	} else {
+		convertCel();
+	}
+}, false);
 
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -31,10 +35,10 @@ function getWeather() {
     myCity.textContent = info.name;
     message.textContent = info.weather[0].description;
 
-    if ((info.weather[0].description).indexOf("rain")) {
+    if ((info.weather[0].main).indexOf("rain") || (info.weather[0].main).indexOf("storm")) {
       $("body").css("background-image", "url(rainy.jpg)");
 
-    } else if ((info.weather[0].description).indexOf("snow")) {
+    } else if ((info.weather[0].main).indexOf("snow") || (info.weather[0].main).indexOf("flurries")) {
       $("body").css("background-image", "url(snowy.jpg)");
 
     } else {
@@ -48,17 +52,15 @@ function getWeather() {
 }
 
 function convertCel() {
+	check = 0;
   var cTemp; // temporary to hold celsius value
-  convertC.style.visibility = "hidden";
-  convertF.style.visibility = "visible";
   cTemp = Math.round(tempNow - 273.15);
   displayTemp.textContent = cTemp + "\u00B0C"; //display temp value and add degree
 }
 
 function convertFah() {
+	check = 1;
   var fTemp; // temporary to hold fahrenheit value
-  convertF.style.visibility = "hidden";
-  convertC.style.visibility = "visible";
   fTemp = Math.round(1.8 * (tempNow - 273) + 32);
   displayTemp.textContent = fTemp + "\u00B0F"; //display temp value and add degree
 }
