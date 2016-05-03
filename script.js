@@ -35,10 +35,10 @@ function getWeather() {
     myCity.textContent = info.name;
     message.textContent = info.weather[0].description;
 
-    if ((info.weather[0].main).indexOf("rain") || (info.weather[0].main).indexOf("storm")) {
+    if ((info.weather[0].main).indexOf("rain") >= 0 || (info.weather[0].main).indexOf("storm") >= 0) {
       $("body").css("background-image", "url(rainy.jpg)");
 
-    } else if ((info.weather[0].main).indexOf("snow") || (info.weather[0].main).indexOf("flurries")) {
+    } else if ((info.weather[0].main).indexOf("snow") >= 0 || (info.weather[0].main).indexOf("flurries") >= 0) {
       $("body").css("background-image", "url(snowy.jpg)");
 
     } else {
