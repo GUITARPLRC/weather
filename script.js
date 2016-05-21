@@ -35,11 +35,21 @@ function getWeather() {
     myCity.textContent = info.name;
     message.textContent = info.weather[0].description;
 
+<<<<<<< HEAD
+    if ((info.weather[0].main).indexOf("rain") > -1 || (info.weather[0].main).indexOf("storm") > -1) {
+      $("body").css("background-image", "url(rainy.jpg)");
+
+    } else if ((info.weather[0].main).indexOf("snow") > -1 || (info.weather[0].main).indexOf("sleet") > -1) {
+=======
     if ((info.weather[0].main).indexOf("rain") >= 0 || (info.weather[0].main).indexOf("storm") >= 0) {
       $("body").css("background-image", "url(rainy.jpg)");
 
     } else if ((info.weather[0].main).indexOf("snow") >= 0 || (info.weather[0].main).indexOf("flurries") >= 0) {
+>>>>>>> origin/master
       $("body").css("background-image", "url(snowy.jpg)");
+
+    } else if ((info.weather[0].main).indexOf("cloud") > -1 || (info.weather[0].main).indexOf("sleet") > -1) {
+      $("body").css("background-image", "url(cloudy.jpg)");
 
     } else {
       $("body").css("background-image", "url(sunny.jpg)");
