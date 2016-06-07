@@ -2,6 +2,7 @@ var container = document.getElementById("container");
 var displayTemp = document.getElementById("temperature");
 var message = document.getElementById("message");
 var myCity = document.getElementById("myCity");
+var icon = document.getElementById("icon");
 var myLocation; // store location info
 var myLat;
 var myLong;
@@ -34,26 +35,39 @@ function getWeather() {
     tempNow = info.main.temp;
     myCity.textContent = info.name;
     message.textContent = info.weather[0].description;
-
-<<<<<<< HEAD
-    if ((info.weather[0].main).indexOf("rain") > -1 || (info.weather[0].main).indexOf("storm") > -1) {
-      $("body").css("background-image", "url(rainy.jpg)");
-
-    } else if ((info.weather[0].main).indexOf("snow") > -1 || (info.weather[0].main).indexOf("sleet") > -1) {
-=======
-    if ((info.weather[0].main).indexOf("rain") >= 0 || (info.weather[0].main).indexOf("storm") >= 0) {
-      $("body").css("background-image", "url(rainy.jpg)");
-
-    } else if ((info.weather[0].main).indexOf("snow") >= 0 || (info.weather[0].main).indexOf("flurries") >= 0) {
->>>>>>> origin/master
-      $("body").css("background-image", "url(snowy.jpg)");
-
-    } else if ((info.weather[0].main).indexOf("cloud") > -1 || (info.weather[0].main).indexOf("sleet") > -1) {
-      $("body").css("background-image", "url(cloudy.jpg)");
-
-    } else {
-      $("body").css("background-image", "url(sunny.jpg)");
-
+    icon.setAttribute("src", "http://openweathermap.org/img/w/"+ info.weather[0].icon +".png")
+		
+    switch (info.weather[0].icon) {
+      
+      case "02d": // CLOUDY
+      case "02n":
+      case "03d":
+      case "03n":
+      case "04d":
+      case "04n":
+        $("body").css("background-image", "url(cloudy.jpg)");
+        break;
+      case "09d": // RAIN
+      case "09n":
+      case "10d":
+      case "10n":
+        $("body").css("background-image", "url(rainy.jpg)");
+        break;
+      case "11d": // THUNDERSTORM
+      case "11n":
+        
+        break;
+      case "13d": // SNOW
+      case "13n":
+        $("body").css("background-image", "url(snowy.jpg)");
+        break;
+      case "50d": // MIST / FOG
+      case "50n":
+      
+        break;
+      default: // CLEAR SKY
+        $("body").css("background-image", "url(sunny.jpg)");
+      
     }
 		
 		convertFah();
