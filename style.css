@@ -13,7 +13,7 @@ body {
 h1 {
 	font-size:70px;
 	color:#34495e;
-	text-shadow:-1px 0 #95a5a6, 0 1px #95a5a6, 1px 0 #95a5a6, 0 -1px #95a5a6;
+	text-shadow:-1px 0 #fff, 0 1px #fff, 1px 0 #95a5a6, 0 -1px #95a5a6;
 }
 #container {
 	margin:50px auto 50px auto;

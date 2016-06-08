@@ -40,31 +40,45 @@ function getWeather() {
     switch (info.weather[0].icon) {
       
       case "02d": // CLOUDY
-      case "02n":
-      case "03d":
-      case "03n":
       case "04d":
+      case "03d":
+        $("body").css("background-image", "url(cloudy-field.jpg)");
+        break;
+      case "02n":
+      case "03n":
       case "04n":
-        $("body").css("background-image", "url(cloudy.jpg)");
+        $("body").css("background-image", "url(cloudy-sunset.jpg)");
         break;
       case "09d": // RAIN
-      case "09n":
       case "10d":
-      case "10n":
         $("body").css("background-image", "url(rainy.jpg)");
         break;
+      case "10n":
+      case "09n":
+        $("body").css("background-image", "url(rain-glass.jpe)");
+        break;
       case "11d": // THUNDERSTORM
+				$("body").css("background-image", "url(lightning-storm.jpg)");
+				break;
       case "11n":
-        
+        $("body").css("background-image", "url(stormy-beach.jpg)");
         break;
       case "13d": // SNOW
       case "13n":
         $("body").css("background-image", "url(snowy.jpg)");
         break;
       case "50d": // MIST / FOG
+				$("body").css("background-image", "url(fog-day.jpeg)");
+				break;
       case "50n":
-      
+				$("body").css("background-image", "url(fog-night.jpeg)")
         break;
+			case "01d": // CLEAR SKY
+				$("body").css("background-image", "url(sunny.jpg)");
+				break;
+			case "01n":
+				$("body").css("background-image", "url(star-night.jpg)");
+				break;
       default: // CLEAR SKY
         $("body").css("background-image", "url(sunny.jpg)");
       
