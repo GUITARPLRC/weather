@@ -1,35 +1,35 @@
 html {
-	margin:0;
-	padding:0;
-	text-align:center;
-	font-family:Helvetica, Arial, Sans-Serif;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: Helvetica, Arial, Sans-Serif;
 }
 
 body {
-	background-size:cover;
-	background-repeat:no-repeat;
-	height:100%;
+	background: no-repeat center center fixed;
+	height: 100%;
 }
 h1 {
-	font-size:70px;
-	color:#34495e;
-	text-shadow:-1px 0 #fff, 0 1px #fff, 1px 0 #95a5a6, 0 -1px #95a5a6;
+	font-size: 70px;
+	color: #34495e;
+	text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #95a5a6, 0 -1px #95a5a6;
 }
 #container {
-	margin:50px auto 50px auto;
-	width:300px;
-	height:300px;
-	background-color:#34495e;
-	color:#ecf0f1;
-	border:10px solid #95a5a6;
-	border-radius:50%;
-	box-shadow:0 0 30px #000;
+	margin: 50px auto 50px auto;
+	width: 300px;
+	height: 300px;
+	background-color: #34495e;
+	color: #ecf0f1;
+	border: 10px solid #95a5a6;
+	border-radius: 50%;
+	-webkit-box-shadow: 0 0 30px #000;
+	box-shadow: 0 0 30px #000;
 }
 #center {
-	position:relative;
-	top:20%;
+	position: relative;
+	top: 20%;
 }
 #temperature {
-	font-size:75px;
-	margin:10% 0;
+	font-size: 75px;
+	margin: 10% 0;
 }
